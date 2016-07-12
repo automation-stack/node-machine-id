@@ -1,6 +1,6 @@
 {
   "name": "electron-machine-id",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/index.js",
   "description": "Unique machine (desktop) id for Electron application (no admin privileges required).",
   "author": "Aleksandr Komlev",

@@ -1,5 +1,9 @@
 ## Unique machine (desktop) id for Electron application
 
+## Use cases
+- Software restrictions
+- Installation tracking
+
 ## Features
 - Hardware independent
 - Unique within the OS installation

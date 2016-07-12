@@ -97,9 +97,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        case 'darwin':
 	            return result.split('IOPlatformUUID')[1].split('\n')[0].replace(/\=|\s+|\"/ig, '').toLowerCase();
 	        case 'win32':
-	            return result.toString().split('REG_SZ')[1].replace(/\r+|\n+|\s+/ig, '');
+	            return result.toString().split('REG_SZ')[1].replace(/\r+|\n+|\s+/ig, '').toLowerCase();
 	        case 'linux':
-	            return result.toString().toLowerCase();
+	            return result.toString().replace(/\r+|\n+|\s+/ig, '').toLowerCase();
 	        default:
 	            throw new Error('Unsupported platform: ' + process.platform);
 	    }

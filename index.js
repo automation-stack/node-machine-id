@@ -24,10 +24,12 @@ function expose(result: string): string {
             return result
                 .toString()
                 .split('REG_SZ')[1]
-                .replace(/\r+|\n+|\s+/ig, '');
+                .replace(/\r+|\n+|\s+/ig, '')
+                .toLowerCase();
         case 'linux':
             return result
                 .toString()
+                .replace(/\r+|\n+|\s+/ig, '')
                 .toLowerCase();
         default:
             throw new Error(`Unsupported platform: ${process.platform}`);

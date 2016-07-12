@@ -137,4 +137,4 @@
     - "flowtype"
   settings:
     flowtype:
-      onlyFilesWithFlowAnnotation: false
+      onlyFilesWithFlowAnnotation: true

@@ -34,12 +34,12 @@ function expose(result: string): string {
     }
 }
 
-function machineIdSync(original: boolean): string {
+export function machineIdSync(original: boolean): string {
     let id: string = expose(execSync(guid[platform]).toString());
     return original ? id : hash(id);
 }
 
-function machineId(original: boolean): Promise {
+export function machineId(original: boolean): Promise {
     return new Promise((resolve: Function, reject: Function): Object => {
         return exec(guid[platform], (err: any, stdout: any, stderr: any): string => {
             if (err) {
@@ -50,6 +50,3 @@ function machineId(original: boolean): Promise {
         });
     });
 }
-
-
-export {machineId, machineIdSync};

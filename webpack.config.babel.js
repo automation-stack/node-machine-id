@@ -13,10 +13,12 @@ export default {
     entry: ['./index.js'],
     output: {
         path: './dist',
-        filename: 'index.js'
+        filename: 'index.js',
+        library: 'electron-machine-id',
+        libraryTarget: 'umd'
     },
-    debug: false,
     target: 'electron',
+    debug: false,
     module: {
         loaders: [
             {
@@ -41,8 +43,10 @@ export default {
         //http://webpack.github.io/docs/configuration.html#node
         console: false,
         process: false,
+        child_process: false,
         global: false,
         buffer: false,
+        crypto: false,
         __filename: false,
         __dirname: false
     },

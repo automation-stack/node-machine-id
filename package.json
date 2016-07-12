@@ -1,7 +1,7 @@
 {
   "name": "electron-machine-id",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "description": "Unique cross-platform machine id for Electron application (no admin provoleges required).",
   "readme": "README.md",
   "author": "Aleksandr Komlev",
@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/automation-stack/electron-machine-id#readme",
   "scripts": {
-    "build": "WEBPACK=node_modules/webpack/bin/webpack.js && NODE_ENV=production && $WEBPACK --config webpack.config.babel.js",
+    "build": "WEBPACK=node_modules/webpack/bin/webpack.js && $WEBPACK --config webpack.config.babel.js",
+    "prepublish": "npm run build && npm run test",
     "lint": "node_modules/eslint/bin/eslint.js -c .eslintrc ./src",
     "test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register ./tests"
   },

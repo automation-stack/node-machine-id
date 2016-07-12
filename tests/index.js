@@ -1,6 +1,6 @@
 import {assert} from 'chai';
-import {machineId, machineIdSync} from '../index';
-
+import {machineId, machineIdSync} from '../dist/index';
+console.log(machineId, machineIdSync);
 
 let {platform} = process,
     originalPattern = {
@@ -33,5 +33,13 @@ describe('Async call: machineId()', function() {
 describe('Sync call: machineIdSync()', function() {
     it('should return unique sha256-hash', () => {
         assert.match(machineIdSync(), hashPattern);
+    });
+});
+
+describe('CommonJS imports', function () {
+    it('should return function machineIdSync, machineId', function () {
+        let __module__ = require('../dist/index');
+        assert.isFunction(__module__.machineId);
+        assert.isFunction(__module__.machineIdSync);
     });
 });

@@ -18,7 +18,7 @@ Module based on OS native UUID/GUID which used for internal needs.
 **All others approaches requires elevated rights or much depends on hardware components, but this approach summarize the methods of selecting the most reliable unique identifier**
 
 - **Win32/64** uses key ```MachineGuid``` in registry
-```HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography :``` **(can be changed by admin but with unpredictable consequences)**
+```HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography``` **(can be changed by administrator but with unpredictable consequences)**
 >   It is generated during OS installation and won't change unless you make another OS
 >   updates or reinstall. Depending on the OS version it may contain the network adapter
 >   MAC address embedded (plus some other numbers, including random), or a pseudorandom number.
@@ -27,7 +27,7 @@ Module based on OS native UUID/GUID which used for internal needs.
 ``` ioreg -rd1 -c IOPlatformExpertDevice ```
 >   Value from I/O Kit registry in IOPlatformExpertDevice class
 
-- **Linux** uses ```/var/lib/dbus/machine-id``` **(can be changed by root but with unpredictable consequences)**
+- **Linux** uses ```/var/lib/dbus/machine-id``` **(can be changed by ```root``` but with unpredictable consequences)**
 http://man7.org/linux/man-pages/man5/machine-id.5.html
 >   The /var/lib/dbus/machine-id file contains the unique machine ID of the local
 >   system that is set during installation. The machine ID is a single

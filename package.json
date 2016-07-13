@@ -18,7 +18,8 @@
     "machine id",
     "unique platform id",
     "electron platform id",
-    "unique identifier"
+    "unique identifier",
+    "restrictions"
   ],
   "bugs": {
     "url": "https://github.com/automation-stack/electron-machine-id/issues"

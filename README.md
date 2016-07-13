@@ -51,10 +51,10 @@ npm install electron-machine-id
 
 ## Usage
 ### Function: machineId(original)
-- original ```<Boolean>```, If ```true``` return original value of machine id, otherwise return hashed value (sha-256), default: ```false```
+- **original** ```<Boolean>```, If ```true``` return original value of machine id, otherwise return hashed value (sha-256), default: ```false```
 
 ### Function: machineIdSync(original);
-- Syncronous version ```machineId```
+- syncronous version of ```machineId```
 
 ```js
 import {machineId, machineIdSync} from 'electron-machine-id';

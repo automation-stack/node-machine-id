@@ -27,7 +27,7 @@
   "homepage": "https://github.com/automation-stack/electron-machine-id#readme",
   "scripts": {
     "build": "WEBPACK=node_modules/webpack/bin/webpack.js && $WEBPACK --config webpack.config.babel.js",
-    "prepublish": "npm run build && npm run test",
+    "prepublish": "npm run test",
     "lint": "node_modules/eslint/bin/eslint.js -c .eslintrc ./src",
     "test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register ./tests"
   },

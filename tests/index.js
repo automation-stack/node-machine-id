@@ -1,6 +1,5 @@
 import {assert} from 'chai';
 import {machineId, machineIdSync} from '../dist/index';
-console.log(machineId, machineIdSync);
 
 let {platform} = process,
     originalPattern = {

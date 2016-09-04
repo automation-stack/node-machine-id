@@ -1,4 +1,4 @@
-## Unique machine (desktop) id for Electron application
+## Unique machine (desktop) id
 
 ## Use cases
 - Software restrictions
@@ -46,7 +46,7 @@ http://man7.org/linux/man-pages/man5/machine-id.5.html
 
 ## Installation
 ```
-npm install electron-machine-id
+npm install node-machine-id
 ```
 
 ## Usage
@@ -57,7 +57,7 @@ npm install electron-machine-id
 - syncronous version of ```machineId```
 
 ```js
-import {machineId, machineIdSync} from 'electron-machine-id';
+import {machineId, machineIdSync} from 'node-machine-id';
 
 // Asyncronous call with async/await or Promise
 

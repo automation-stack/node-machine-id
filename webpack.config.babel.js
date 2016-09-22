@@ -36,7 +36,13 @@ export default {
         ]
     },
     plugins: [
-        new webpack.IgnorePlugin(/node_modules/)
+        new webpack.IgnorePlugin(/node_modules/),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false },
+            output: { comments: false },
+        })
     ],
     node: {
         //do not include polyfills...

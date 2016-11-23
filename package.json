@@ -1,6 +1,6 @@
 {
   "name": "node-machine-id",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "./dist/index.js",
   "description": "Unique machine (desktop) id (no admin privileges required).",
   "author": "Aleksandr Komlev",

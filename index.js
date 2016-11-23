@@ -6,7 +6,7 @@ let {platform}: Object = process,
     guid: Object = {
         darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
         win32: 'REG QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid',
-        linux: 'cat /var/lib/dbus/machine-id'
+        linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null'
     };
 
 function hash(guid: string): string {

@@ -17,7 +17,7 @@
             "module": "bluebird",
             "method": "coroutine"
         }],
-        ["babel-plugin-module-alias", [
+        ["babel-plugin-module-resolver", [
             { "src": "./src/", "expose": "~" },
             { "src": "./test", "expose": "t" }
         ]],

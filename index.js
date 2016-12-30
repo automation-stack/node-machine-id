@@ -2,10 +2,16 @@
 import {exec, execSync} from 'child_process';
 import {createHash} from 'crypto';
 
-let {platform}: Object = process,
+let {platform, arch}: Object = process,
+    win32RegBinPath = {
+        x64: '%windir%\SysWOW64',
+        ia32: '%windir%\System32'
+    },
     guid: Object = {
         darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
-        win32: 'REG QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid',
+        win32: `${win32RegBinPath[arch]}\REG ` +
+            `QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ` +
+            `/v MachineGuid`,
         linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null'
     };
 
@@ -41,7 +47,7 @@ export function machineIdSync(original: boolean): string {
     return original ? id : hash(id);
 }
 
-export function machineId(original: boolean): Promise {
+export function machineId(original: boolean): Promise<string> {
     return new Promise((resolve: Function, reject: Function): Object => {
         return exec(guid[platform], (err: any, stdout: any, stderr: any): string => {
             if (err) {

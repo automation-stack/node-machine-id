@@ -34,13 +34,13 @@
     "test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register ./tests"
   },
   "devDependencies": {
-    "babel-cli": "^6.7.7",
-    "babel-core": "^6.7.7",
-    "babel-eslint": "^6.0.0",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-array-includes": "^2.0.3",
     "babel-plugin-lodash": "^2.2.1",
-    "babel-plugin-module-alias": "^1.2.0",
+    "babel-plugin-module-resolver": "^2.4.0",
     "babel-plugin-syntax-async-functions": "^6.5.0",
     "babel-plugin-syntax-decorators": "^6.5.0",
     "babel-plugin-syntax-flow": "^6.8.0",
@@ -67,7 +67,7 @@
     "mocha": "^2.4.5",
     "raw-loader": "^0.5.1",
     "source-map-support": "^0.4.0",
-    "webpack": "^1.12.14",
+    "webpack": "latest",
     "webpack-dev-server": "^1.14.1",
     "webpack-module-hot-accept": "^1.0.4"
   }

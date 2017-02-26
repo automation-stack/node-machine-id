@@ -18,13 +18,12 @@ export default {
         libraryTarget: 'umd'
     },
     target: 'electron',
-    debug: false,
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
                     cacheDirectory: true
                 }
@@ -37,7 +36,7 @@ export default {
     },
     plugins: [
         new webpack.IgnorePlugin(/node_modules/),
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false },

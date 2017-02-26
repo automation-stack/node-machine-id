@@ -4,8 +4,8 @@ import {createHash} from 'crypto';
 
 let {platform, arch}: Object = process,
     win32RegBinPath = {
-        x64: '%windir%\System32',
-        ia32: '%windir%\sysnative\cmd.exe /c %windir%\System32'
+        ia32: '%windir%\System32',
+        x64: '%windir%\sysnative\cmd.exe /c %windir%\System32'
     },
     guid: Object = {
         darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',

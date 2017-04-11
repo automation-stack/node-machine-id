@@ -8,7 +8,8 @@ let {platform, arch}: Object = process,
         win32: `%windir%\System32\REG ` +
             `QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ` +
             `/v MachineGuid`,
-        linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || :'
+        linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || :',
+        freebsd: 'kenv -q smbios.system.uuid'
     };
 
 function hash(guid: string): string {
@@ -29,6 +30,11 @@ function expose(result: string): string {
                 .replace(/\r+|\n+|\s+/ig, '')
                 .toLowerCase();
         case 'linux':
+            return result
+                .toString()
+                .replace(/\r+|\n+|\s+/ig, '')
+                .toLowerCase();
+        case 'freebsd':
             return result
                 .toString()
                 .replace(/\r+|\n+|\s+/ig, '')

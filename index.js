@@ -9,7 +9,7 @@ let {platform, arch}: Object = process,
         win32: `%windir%\System32\REG ` +
             `QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ` +
             `/v MachineGuid`,
-        linux: ' find /etc/ -name "machine-id" -exec readlink -f {} \; 2> /dev/null | xargs cat || :'
+        linux: 'find /etc/ -name "machine-id" -exec readlink -f {} \; 2> /dev/null | xargs cat || :'
     };
 
 function hash(guid: string): string {

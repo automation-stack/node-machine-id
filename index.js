@@ -9,7 +9,8 @@ let {platform, arch}: Object = process,
         win32: `%windir%\System32\REG ` +
             `QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ` +
             `/v MachineGuid`,
-        linux: 'find /etc/ -name "machine-id" -exec readlink -f {} \; 2> /dev/null | xargs cat || :'
+        linux: 'find /etc/ -name "machine-id" 2> /dev/null | xargs cat || :'
+
     };
 
 function hash(guid: string): string {
@@ -17,6 +18,7 @@ function hash(guid: string): string {
 }
 
 function expose(result: string): string {
+//    console.log(result)
     switch (platform) {
         case 'darwin':
             return result

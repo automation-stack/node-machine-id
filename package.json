@@ -1,7 +1,7 @@
 {
   "name": "node-machine-id",
   "version": "1.1.4",
-  "main": "./index.js",
+  "main": "./build/index.js",
   "description": "Unique machine (desktop) id (no admin privileges required).",
   "author": "Aleksandr Komlev",
   "license": "MIT",

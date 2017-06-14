@@ -12,7 +12,7 @@ let nodeModules = fs.readdirSync('./node_modules')
 export default {
     entry: ['./index.js'],
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + './dist',
         filename: 'index.js',
         library: 'electron-machine-id',
         libraryTarget: 'umd'

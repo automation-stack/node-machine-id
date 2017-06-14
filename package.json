@@ -70,5 +70,8 @@
     "webpack": "latest",
     "webpack-dev-server": "^1.14.1",
     "webpack-module-hot-accept": "^1.0.4"
+  },
+  "dependencies": {
+    "crypto": "^0.0.3"
   }
 }

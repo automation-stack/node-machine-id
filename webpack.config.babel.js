@@ -12,19 +12,18 @@ let nodeModules = fs.readdirSync('./node_modules')
 export default {
     entry: ['./index.js'],
     output: {
-        path: './dist',
+        path: __dirname + '/dist',
         filename: 'index.js',
         library: 'electron-machine-id',
         libraryTarget: 'umd'
     },
     target: 'electron',
-    debug: false,
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
                     cacheDirectory: true
                 }
@@ -37,7 +36,7 @@ export default {
     },
     plugins: [
         new webpack.IgnorePlugin(/node_modules/),
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false },

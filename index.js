@@ -4,7 +4,7 @@ import {createHash} from 'crypto';
 
 let {platform, arch}: Object = process,
     win32RegBinPath = {
-        : '%windir%\\System32',
+        x64: '%windir%\\System32',
         ia32: '%windir%\\sysnative\\cmd.exe /c %windir%\\System32'
     },
     guid: Object = {

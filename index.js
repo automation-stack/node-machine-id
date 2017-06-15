@@ -2,6 +2,7 @@
 import {exec, execSync} from 'child_process';
 import {createHash} from 'crypto';
 
+
 let {platform, arch}: Object = process,
     win32RegBinPath = {
         ia32: '%windir%\System32',
@@ -12,7 +13,8 @@ let {platform, arch}: Object = process,
         win32: `${win32RegBinPath[arch]}\REG ` +
             `QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ` +
             `/v MachineGuid`,
-        linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || :'
+        linux: 'find /etc/ -name "machine-id" 2> /dev/null | xargs cat || :'
+
     };
 
 function hash(guid: string): string {
@@ -20,6 +22,7 @@ function hash(guid: string): string {
 }
 
 function expose(result: string): string {
+//    console.log(result)
     switch (platform) {
         case 'darwin':
             return result

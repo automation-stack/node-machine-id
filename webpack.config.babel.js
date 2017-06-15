@@ -12,7 +12,7 @@ let nodeModules = fs.readdirSync('./node_modules')
 export default {
     entry: ['./index.js'],
     output: {
-        path: __dirname + './dist',
+        path: __dirname + '/dist',
         filename: 'index.js',
         library: 'electron-machine-id',
         libraryTarget: 'umd'
@@ -37,7 +37,6 @@ export default {
     plugins: [
         new webpack.IgnorePlugin(/node_modules/),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false },
             output: { comments: false },

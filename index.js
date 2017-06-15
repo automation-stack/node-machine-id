@@ -3,9 +3,13 @@ import {exec, execSync} from 'child_process';
 import {createHash} from 'crypto';
 
 let {platform, arch}: Object = process,
+    win32RegBinPath = {
+        ia32: '%windir%\System32',
+        x64: '%windir%\sysnative\cmd.exe /c %windir%\System32'
+    },
     guid: Object = {
         darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
-        win32: `%windir%\System32\REG ` +
+        win32: `${win32RegBinPath[arch]}\REG ` +
             `QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ` +
             `/v MachineGuid`,
         linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || :'

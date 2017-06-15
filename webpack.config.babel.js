@@ -18,13 +18,12 @@ export default {
         libraryTarget: 'umd'
     },
     target: 'electron',
-    debug: false,
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
                     cacheDirectory: true
                 }

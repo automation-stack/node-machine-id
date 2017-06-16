@@ -36,11 +36,7 @@ export default {
     },
     plugins: [
         new webpack.IgnorePlugin(/node_modules/),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false },
-            output: { comments: false },
-        })
+        new webpack.optimize.OccurrenceOrderPlugin()
     ],
     node: {
         //do not include polyfills...

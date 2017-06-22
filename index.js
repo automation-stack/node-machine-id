@@ -4,17 +4,29 @@ import {createHash} from 'crypto';
 
 let {platform, arch}: Object = process,
     win32RegBinPath = {
-        ia32: '%windir%\System32',
-        x64: '%windir%\sysnative\cmd.exe /c %windir%\System32'
+        native: '%windir%\\System32',
+        mixed: '%windir%\\sysnative\\cmd.exe /c %windir%\\System32'
     },
     guid: Object = {
         darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
-        win32: `${win32RegBinPath[arch]}\REG ` +
+        win32: `${win32RegBinPath[isWindowsProcessMixedOrNativeArchitecture()]}\\REG ` +
             `QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ` +
             `/v MachineGuid`,
         linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || :',
         freebsd: 'kenv -q smbios.system.uuid'
     };
+
+function isWindowsProcessMixedOrNativeArchitecture(): string {
+    // detect if the node binary is the same arch as the Windows OS.
+    // or if this is 32 bit node on 64 bit windows.
+    if(process.platform !== 'win32') {
+        return null;
+    }
+    if( process.arch === 'x32' && process.env.hasOwnProperty('PROCESSOR_ARCHITEW6432') ) {
+        return 'mixed';
+    }
+    return 'native';
+}
 
 function hash(guid: string): string {
     return createHash('sha256').update(guid).digest('hex');

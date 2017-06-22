@@ -78,7 +78,3 @@ export function machineId(original: boolean): Promise<string> {
         });
     });
 }
-
-export function Mark() {
-	return "Mark!!";
-}

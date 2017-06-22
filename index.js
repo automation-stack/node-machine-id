@@ -22,7 +22,7 @@ function isWindowsProcessMixedOrNativeArchitecture(): string {
     if(process.platform !== 'win32') {
         return null;
     }
-    if( process.arch === 'x32' && process.env.hasOwnProperty('PROCESSOR_ARCHITEW6432') ) {
+    if( process.arch === 'ia32' && process.env.hasOwnProperty('PROCESSOR_ARCHITEW6432') ) {
         return 'mixed';
     }
     return 'native';
@@ -77,4 +77,8 @@ export function machineId(original: boolean): Promise<string> {
             return resolve(original ? id : hash(id));
         });
     });
+}
+
+export function Mark() {
+	return "Mark!!";
 }

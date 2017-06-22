@@ -1,5 +1,7 @@
 ## Unique machine (desktop) id
 
+Cross-platform `unique machine id` discovery
+
 ## Use cases
 - Software restrictions
 - Installation tracking

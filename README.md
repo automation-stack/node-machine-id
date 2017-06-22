@@ -77,3 +77,7 @@ let id = machineIdSync()
 let id = machineIdSync({original: true})
 // id = 98912984-c4e9-5ceb-8000-03882a0485e4
 ```
+### Caveats
+
+- Image-based environments have usually the same `machine-id`
+> As a workaround you can generate new machine-ids for each instance (or container) with `dbus-uuidgen` and changed them in the respective > files: `/etc/machine-id` and `/var/lib/dbus/machine-id`. Thanks [@stefanhuber](https://github.com/stefanhuber)

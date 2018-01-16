@@ -1,6 +1,6 @@
 {
   "name": "node-machine-id",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "description": "Unique machine (desktop) id (no admin privileges required).",

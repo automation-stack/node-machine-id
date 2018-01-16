@@ -12,7 +12,7 @@ let {platform}: Object = process,
         win32: `${win32RegBinPath[isWindowsProcessMixedOrNativeArchitecture()]}\\REG ` +
             'QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ' +
             '/v MachineGuid',
-        linux: 'cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null | head -n 1 || :',
+        linux: '( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :',
         freebsd: 'kenv -q smbios.system.uuid'
     };
 

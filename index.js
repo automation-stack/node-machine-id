@@ -9,7 +9,7 @@ let {platform}: Object = process,
     },
     guid: Object = {
         darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
-        win32: `${win32RegBinPath[isWindowsProcessMixedOrNativeArchitecture()]}\\REG ` +
+        win32: `${win32RegBinPath[isWindowsProcessMixedOrNativeArchitecture()]}\\REG.exe ` +
             'QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ' +
             '/v MachineGuid',
         linux: '( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :',

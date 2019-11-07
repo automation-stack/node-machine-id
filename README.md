@@ -75,7 +75,7 @@ machineId().then((id) => {
 
 let id = machineIdSync()
 // id = c24b0fe51856497eebb6a2bfcd120247aac0d6334d670bb92e09a00ce8169365
-let id = machineIdSync({original: true})
+let id = machineIdSync(/** original */ true)
 // id = 98912984-c4e9-5ceb-8000-03882a0485e4
 ```
 ### Caveats

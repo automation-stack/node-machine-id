@@ -8,7 +8,7 @@ let {platform}: Object = process,
         mixed: '%windir%\\sysnative\\cmd.exe /c %windir%\\System32'
     },
     guid: Object = {
-        darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
+        darwin: '/usr/sbin/ioreg -rd1 -c IOPlatformExpertDevice',
         win32: `${win32RegBinPath[isWindowsProcessMixedOrNativeArchitecture()]}\\REG.exe ` +
             'QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ' +
             '/v MachineGuid',

@@ -68,13 +68,19 @@ export function machineIdSync(original: boolean): string {
 export function machineId(original: boolean): Promise<string> {
     return new Promise((resolve: Function, reject: Function): Object => {
         return exec(guid[platform], {}, (err: any, stdout: any, stderr: any) => {
-            if (err) {
-                return reject(
-                    new Error(`Error while obtaining machine id: ${err.stack}`)
-                );
+            // This is executing in a callback, so any Exceptions thrown will
+            // not reject the promise
+            try {
+                if (err) {
+                    return reject(
+                        new Error(`Error while obtaining machine id: ${err.stack}`)
+                    );
+                }
+                let id: string = expose(stdout.toString());
+                return resolve(original ? id : hash(id));
+            } catch (exception) {
+                return reject(exception);
             }
-            let id: string = expose(stdout.toString());
-            return resolve(original ? id : hash(id));
         });
     });
 }

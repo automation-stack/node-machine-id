@@ -13,7 +13,8 @@ let {platform}: Object = process,
             'QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography ' +
             '/v MachineGuid',
         linux: '( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :',
-        freebsd: 'kenv -q smbios.system.uuid || sysctl -n kern.hostuuid'
+        freebsd: 'kenv -q smbios.system.uuid || sysctl -n kern.hostuuid',
+        android: 'uuid|cut -d \'-\' -f 3'
     };
 
 function isWindowsProcessMixedOrNativeArchitecture(): string {
@@ -51,6 +52,11 @@ function expose(result: string): string {
                 .replace(/\r+|\n+|\s+/ig, '')
                 .toLowerCase();
         case 'freebsd':
+            return result
+                .toString()
+                .replace(/\r+|\n+|\s+/ig, '')
+                .toLowerCase();
+        case 'android':
             return result
                 .toString()
                 .replace(/\r+|\n+|\s+/ig, '')

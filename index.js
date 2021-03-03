@@ -14,7 +14,7 @@ let {platform}: Object = process,
             '/v MachineGuid',
         linux: '( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :',
         freebsd: 'kenv -q smbios.system.uuid || sysctl -n kern.hostuuid',
-        android: 'a=`getprop ro.boot.vbmeta.digest` && b=`getprop ro.build.display.id` && [ -z $a ] && echo $b || echo $a'
+        android: 'a=`getprop ro.boot.vbmeta.digest` && b=`getprop ro.build.display.id` && [ -z $a ] && echo $b || echo $a|tr " " "-"'
     };
 
 function isWindowsProcessMixedOrNativeArchitecture(): string {

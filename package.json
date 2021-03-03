@@ -1,6 +1,6 @@
 {
   "name": "node-machine-id",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "description": "Unique machine (desktop) id (no admin privileges required).",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:automation-stack/node-machine-id.git"
+    "url": "git@github.com:mooring/node-machine-id.git"
   },
   "keywords": [
     "unique id",
@@ -25,9 +25,9 @@
     "nw.js id"
   ],
   "bugs": {
-    "url": "https://github.com/automation-stack/node-machine-id/issues"
+    "url": "https://github.com/mooring/node-machine-id/issues"
   },
-  "homepage": "https://github.com/automation-stack/node-machine-id#readme",
+  "homepage": "https://github.com/mooring/node-machine-id#readme",
   "scripts": {
     "build": "WEBPACK=node_modules/webpack/bin/webpack.js && $WEBPACK --config webpack.config.babel.js",
     "prepublish": "npm run test",

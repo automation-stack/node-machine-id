@@ -1,19 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.machineId = exports.machineIdSync = void 0;
-var child_process_1 = require("child_process");
-var crypto_1 = require("crypto");
-var reg = require("native-reg");
-var platform = process.platform;
-var guid = {
+import {exec, execSync} from 'child_process';
+import {createHash} from 'crypto';
+import * as reg from "native-reg";
+
+const { platform } = process;
+
+const guid = {
     darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
     linux: '( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :',
     freebsd: 'kenv -q smbios.system.uuid || sysctl -n kern.hostuuid'
 };
-function hash(guid) {
-    return crypto_1.createHash('sha256').update(guid).digest('hex');
+
+function hash(guid: string): string {
+    return createHash('sha256').update(guid).digest('hex');
 }
-function expose(result) {
+
+function expose(result: string): string {
     switch (platform) {
         case 'darwin':
             return result
@@ -37,24 +38,26 @@ function expose(result) {
                 .replace(/\r+|\n+|\s+/ig, '')
                 .toLowerCase();
         default:
-            throw new Error("Unsupported platform: " + process.platform);
+            throw new Error(`Unsupported platform: ${process.platform}`);
     }
 }
-function windowsMachineId() {
+
+function windowsMachineId(): string {
     return reg.getValue(reg.HKEY.LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Cryptography", "MachineGuid").toString();
 }
+
 /**
  * This function gets the OS native UUID/GUID synchronously, hashed by default.
  * @param {boolean} [original=false] If true return original value of machine id, otherwise return hashed value (sha - 256)
  */
-function machineIdSync(original) {
-    if (original === void 0) { original = false; }
-    var id = platform === "win32"
+export function machineIdSync(original: boolean = false): string {
+    const id = platform === "win32"
         ? windowsMachineId()
-        : expose(child_process_1.execSync(guid[platform]).toString());
+        : expose(execSync(guid[platform]).toString());
+
     return original ? id : hash(id);
 }
-exports.machineIdSync = machineIdSync;
+
 /**
  * This function gets the OS native UUID/GUID asynchronously (recommended), hashed by default.
  *
@@ -62,24 +65,24 @@ exports.machineIdSync = machineIdSync;
  * @param {boolean} [original=false] If true return original value of machine id, otherwise return hashed value (sha - 256)
  *
  */
-function machineId(original) {
-    if (original === void 0) { original = false; }
-    return new Promise(function (resolve, reject) {
+export function machineId(original: boolean = false): Promise<string> {
+    return new Promise((resolve: Function, reject: Function): Object => {
         if (platform === "win32") {
             try {
                 return resolve(windowsMachineId());
-            }
-            catch (error) {
+            } catch (error) {
                 return reject(error);
             }
         }
-        return child_process_1.exec(guid[platform], {}, function (err, stdout, stderr) {
+
+        return exec(guid[platform], {}, (err: any, stdout: any, stderr: any) => {
             if (err) {
-                return reject(new Error("Error while obtaining machine id: " + err.stack));
+                return reject(new Error(`Error while obtaining machine id: ${err.stack}`));
             }
-            var id = expose(stdout.toString());
+
+            const id = expose(stdout.toString());
+
             return resolve(original ? id : hash(id));
         });
     });
 }
-exports.machineId = machineId;

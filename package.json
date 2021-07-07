@@ -29,12 +29,13 @@
   },
   "homepage": "https://github.com/automation-stack/node-machine-id#readme",
   "scripts": {
-    "build": "WEBPACK=node_modules/webpack/bin/webpack.js && $WEBPACK --config webpack.config.babel.js",
+    "build": "tsc",
     "prepublish": "npm run test",
-    "lint": "node_modules/eslint/bin/eslint.js -c .eslintrc ./src",
-    "test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register ./tests"
+    "lint": "npm bin && eslint -c .eslintrc ./src",
+    "test": "npm bin && mocha --compilers js:babel-core/register ./tests"
   },
   "devDependencies": {
+    "@types/node": "^16.0.1",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
@@ -70,5 +71,8 @@
     "raw-loader": "^0.5.1",
     "source-map-support": "^0.4.0",
     "webpack": "1.14.0"
+  },
+  "dependencies": {
+    "native-reg": "^0.3.5"
   }
 }

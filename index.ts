@@ -1,9 +1,8 @@
 import {exec, execSync} from 'child_process';
 import {createHash} from 'crypto';
-import * as reg from "native-reg";
 
 const { platform } = process;
-
+const reg = platform === "win32" ? require("native-reg") : null;
 const guid = {
     darwin: 'ioreg -rd1 -c IOPlatformExpertDevice',
     linux: '( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :',
